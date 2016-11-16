@@ -11,5 +11,8 @@
     "url": "https://gitlab.dldl.fr/p-project/p-seeder-cli.git"
   },
   "author": "P-Project",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.9.0"
+  }
 }
