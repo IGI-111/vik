@@ -1,26 +1,19 @@
 {
   "name": "p-seeder-cli",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "P-Seeder Node CLI",
-  "main": "index.js",
+  "main": "seeder.js",
   "scripts": {
-    "lint": "eslint ./src/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://gitlab.dldl.fr/p-project/p-seeder-cli.git"
+    "url": "ssh://git@gitlab.dldl.fr:1002/p-project/p-seeder-cli.git"
   },
-  "author": "P-Project",
+  "author": "",
   "license": "MIT",
   "dependencies": {
-    "commander": "^2.9.0"
-  },
-  "devDependencies": {
-    "eslint": "^3.9.1",
-    "eslint-config-semistandard": "^7.0.0",
-    "eslint-config-standard": "^6.2.1",
-    "eslint-plugin-promise": "^3.3.0",
-    "eslint-plugin-standard": "^2.0.1"
+    "commander": "^2.9.0",
+    "webtorrent": "^0.98.0"
   }
 }
