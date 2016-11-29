@@ -1,6 +1,6 @@
-const daemon = require('./daemon');
+import { list } from './daemon';
 
-daemon.list((err, torrents) => {
+list((err, torrents) => {
   if(err){
     console.error(err);
   } else {

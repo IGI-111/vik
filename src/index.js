@@ -1,4 +1,4 @@
-const program = require('commander');
+import program from 'commander';
 
 program
   .version('0.0.1')
