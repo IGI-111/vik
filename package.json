@@ -2,13 +2,13 @@
   "name": "p-seeder-cli",
   "version": "0.0.1",
   "description": "P-Seeder Node CLI",
-  "main": "dist/index.js",
+  "main": "dist/seeder.js",
   "scripts": {
     "dev": "nodemon -w src --exec \"babel --plugins transform-regenerator src -d dist\"",
     "test": "mocha --compilers js:babel-core/register --require babel-polyfill ./",
     "lint": "eslint src",
     "build": "babel --plugins transform-regenerator src -d dist",
-    "start": "node dist"
+    "start": "node dist/seeder.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +26,8 @@
     "babel-register": "^6.18.0",
     "body-parser": "^1.15.2",
     "commander": "^2.9.0",
+    "humanize-duration": "^3.10.0",
+    "prettysize": "0.0.3",
     "request": "^2.79.0"
   },
   "devDependencies": {

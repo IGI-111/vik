@@ -43,3 +43,27 @@ export function list (callback) {
       }
     });
 }
+
+export function info (torrent, callback) {
+  request.get(daemon + '/info/' + torrent,
+    (err, res, body) => {
+      if (err) {
+        if (callback) {
+          callback(err);
+        }
+        return;
+      }
+
+      let torrentInfo = JSON.parse(body);
+      if (!torrentInfo) {
+        if (callback) {
+          callback(new Error('Couldn\'t parse torrent info from server'));
+        }
+        return;
+      }
+
+      if (callback) {
+        callback(undefined, torrentInfo);
+      }
+    });
+}
