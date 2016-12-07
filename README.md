@@ -1,2 +1,6 @@
 # P-Seeder CLI
-P-Seeder Node CLI
+
+Command line tool to interact with the P-Seeder engine.
+
+You can build with `npm run build`, run tests with `npm run test`
+and run the actual program (once built) with `npm start`.
