@@ -4,7 +4,7 @@ const daemon = 'http://localhost:2342';
 
 export function add (torrent, callback) {
   request.post({
-    url: daemon + '/add',
+    url: `${daemon}/add`,
     json: {
       'torrent': torrent
     }
@@ -20,8 +20,21 @@ export function add (torrent, callback) {
     });
 }
 
+export function remove (torrent, callback) {
+  request.delete(
+    `${daemon}/delete/${torrent}`,
+    (err, res, body) => {
+      let error = err;
+      if (body !== torrent) {
+        error = body;
+      }
+      if (callback) {
+        callback(error);
+      }
+    });
+}
 export function list (callback) {
-  request.get(daemon + '/list',
+  request.get(`${daemon}/list`,
     (err, res, body) => {
       if (err) {
         if (callback) {
@@ -45,7 +58,7 @@ export function list (callback) {
 }
 
 export function info (torrent, callback) {
-  request.get(daemon + '/info/' + torrent,
+  request.get(`${daemon}/info/${torrent}`,
     (err, res, body) => {
       if (err) {
         if (callback) {
