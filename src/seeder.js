@@ -6,4 +6,5 @@ program
   .command('list', 'Show all known torrents.').alias('ls')
   .command('status', 'Show a torrent\'s status.').alias('st')
   .command('remove', 'Remove a torrent.').alias('rm')
+  .command('seed', 'Seed for the platform')
   .parse(process.argv);

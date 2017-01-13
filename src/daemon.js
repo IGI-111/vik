@@ -20,6 +20,17 @@ export function add (torrent, callback) {
     });
 }
 
+export function seed (torrent, callback) {
+  request.post({
+    url: `${daemon}/seed`
+  },
+    (err, res, body) => {
+      if (callback) {
+        callback(err);
+      }
+    });
+}
+
 export function remove (torrent, callback) {
   request.delete(
     `${daemon}/delete/${torrent}`,
