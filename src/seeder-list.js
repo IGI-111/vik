@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { list, info } from './daemon';
 
 list((err, torrents) => {

@@ -39,5 +39,13 @@
     "eslint-plugin-standard": "^2.0.1",
     "mocha": "^3.1.2",
     "nodemon": "^1.11.0"
+  },
+  "bin": {
+    "pseeder": "dist/seeder.js",
+    "pseeder-add": "dist/seeder-add.js",
+    "pseeder-list": "dist/seeder-list.js",
+    "pseeder-remove": "dist/seeder-remove.js",
+    "pseeder-seed": "dist/seeder-seed.js",
+    "pseeder-status": "dist/seeder-status.js"
   }
 }

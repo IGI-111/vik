@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import program from 'commander';
 import humanizeDuration from 'humanize-duration';
 import prettySize from 'prettysize';
