@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import program from 'commander';
+import program from 'commander'
 
 program
   .version('0.0.1')
@@ -8,4 +8,4 @@ program
   .command('status', 'Show a torrent\'s status.').alias('st')
   .command('remove', 'Remove a torrent.').alias('rm')
   .command('seed', 'Seed for the platform')
-  .parse(process.argv);
+  .parse(process.argv)
