@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 import program from 'commander'
 import humanizeDuration from 'humanize-duration'
 import prettySize from 'prettysize'
@@ -8,15 +9,18 @@ program
   .option('-d --debug', 'Print complete status in JSON')
   .parse(process.argv)
 
-program.args.forEach((arg) => info(arg, (err, info) => {
-  if (err) {
-    console.error(err)
-  } else if (program.debug) {
-    console.log(JSON.stringify(info, null, 2))
-  } else {
-    prettyPrint(info)
+program.args.forEach(async (arg) => {
+  try {
+    const i = await info(arg)
+    if (program.debug) {
+      console.log(JSON.stringify(i, null, 2))
+    } else {
+      prettyPrint(i)
+    }
+  } catch (err) {
+    console.error(err.message)
   }
-}))
+})
 
 function prettyPrint (info) {
   let remaining = info.timeRemaining === 0 ? ''

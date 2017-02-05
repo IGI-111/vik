@@ -1,18 +1,16 @@
 #!/usr/bin/env node
+
 import { list, info } from './daemon'
 
-list((err, torrents) => {
-  if (err) {
-    console.error(err)
-  } else {
-    torrents.forEach((t) => {
-      info(t, (err, i) => {
-        if (err) {
-          console.error(err)
-        } else {
-          console.log(`${(i.progress * 100).toFixed(0)}% ${i.infoHash} ${i.name}`)
-        }
-      })
+(async() => {
+  try {
+    const torrents = await list()
+    torrents.forEach(async (t) => {
+      const i = await info(t)
+      console.log(`${(i.progress * 100).toFixed(0)}% ${i.infoHash} ${i.name}`)
     })
+  } catch (e) {
+    console.error(e.message)
+    process.exit(1)
   }
-})
+})()

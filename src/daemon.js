@@ -1,93 +1,34 @@
-import request from 'request'
+import rp from 'request-promise'
 
 const daemon = 'http://localhost:2342'
 
-export function add (torrent, callback) {
-  request.post({
+export function add (torrent) {
+  return rp.post({
     url: `${daemon}/add`,
     json: {
-      'torrent': torrent
+      'infoHash': torrent
     }
-  },
-    (err, res, body) => {
-      let error = err
-      if (body !== torrent) {
-        error = body
-      }
-      if (callback) {
-        callback(error)
-      }
-    })
+  })
 }
 
-export function seed (torrent, callback) {
-  request.post({
-    url: `${daemon}/seed`
-  },
-    (err, res, body) => {
-      if (callback) {
-        callback(err)
-      }
-    })
+export function seed (path) {
+  return rp.post({
+    url: `${daemon}/seed`,
+    json: {
+      'path': path
+    }
+  })
 }
 
-export function remove (torrent, callback) {
-  request.delete(
-    `${daemon}/delete/${torrent}`,
-    (err, res, body) => {
-      let error = err
-      if (body !== torrent) {
-        error = body
-      }
-      if (callback) {
-        callback(error)
-      }
-    })
+export function remove (torrent) {
+  return rp.delete(`${daemon}/delete/${torrent}`)
 }
-export function list (callback) {
-  request.get(`${daemon}/list`,
-    (err, res, body) => {
-      if (err) {
-        if (callback) {
-          callback(err)
-        }
-        return
-      }
-
-      let torrents = JSON.parse(body)
-      if (!torrents) {
-        if (callback) {
-          callback(new Error('Couldn\'t parse torrents from server'))
-        }
-        return
-      }
-
-      if (callback) {
-        callback(undefined, torrents)
-      }
-    })
+export async function list () {
+  const res = await rp.get(`${daemon}/list`)
+  return JSON.parse(res)
 }
 
-export function info (torrent, callback) {
-  request.get(`${daemon}/info/${torrent}`,
-    (err, res, body) => {
-      if (err) {
-        if (callback) {
-          callback(err)
-        }
-        return
-      }
-
-      let torrentInfo = JSON.parse(body)
-      if (!torrentInfo) {
-        if (callback) {
-          callback(new Error('Couldn\'t parse torrent info from server'))
-        }
-        return
-      }
-
-      if (callback) {
-        callback(undefined, torrentInfo)
-      }
-    })
+export async function info (torrent) {
+  const res = await rp.get(`${daemon}/info/${torrent}`)
+  return JSON.parse(res)
 }
