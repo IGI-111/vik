@@ -1,53 +1,30 @@
 {
-  "name": "p-seeder-cli",
-  "version": "0.0.1",
-  "description": "P-Seeder Node CLI",
-  "main": "dist/seeder.js",
+  "name": "vik",
+  "version": "0.1.0",
+  "description": "command line client for wyrm",
+  "main": "src/vik.js",
   "scripts": {
-    "dev": "nodemon -w src --exec \"babel --plugins transform-regenerator src -d dist\"",
-    "test": "mocha --compilers js:babel-core/register --require babel-polyfill ./",
-    "lint": "eslint src",
-    "build": "babel src -d dist",
-    "start": "node dist/seeder.js"
+    "start": "./src/vik.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://gitlab.dldl.fr/p-project/p-seeder-cli.git"
+    "url": "https://github.com/IGI-111/vik.git"
   },
-  "author": "P-Project",
+  "author": "Jibril Saffi",
   "license": "MIT",
   "dependencies": {
-    "babel-plugin-transform-runtime": "^6.16.0",
     "commander": "^2.9.0",
     "humanize-duration": "^3.10.0",
     "prettysize": "0.0.3",
     "request": "^2.79.0",
     "request-promise": "^4.1.1"
   },
-  "devDependencies": {
-    "babel-core": "^6.22.1",
-    "babel-loader": "^6.2.10",
-    "babel-polyfill": "^6.22.0",
-    "babel-preset-es2015": "^6.22.0",
-    "babel-preset-stage-0": "^6.22.0",
-    "chai": "^3.5.0",
-    "eslint": "^3.9.1",
-    "eslint-config-semistandard": "^7.0.0",
-    "eslint-config-standard": "^6.2.1",
-    "eslint-plugin-promise": "^3.3.0",
-    "eslint-plugin-standard": "^2.0.1",
-    "mocha": "^3.1.2",
-    "nodemon": "^1.11.0"
-  },
   "bin": {
-    "pseeder": "dist/seeder.js",
-    "pseeder-add": "dist/seeder-add.js",
-    "pseeder-a": "dist/seeder-add.js",
-    "pseeder-list": "dist/seeder-list.js",
-    "pseeder-ls": "dist/seeder-list.js",
-    "pseeder-remove": "dist/seeder-remove.js",
-    "pseeder-rm": "dist/seeder-remove.js",
-    "pseeder-seed": "dist/seeder-seed.js",
-    "pseeder-status": "dist/seeder-status.js"
+    "vik": "src/vik.js",
+    "vik-add": "src/vik-add.js",
+    "vik-list": "src/vik-list.js",
+    "vik-remove": "src/vik-remove.js",
+    "vik-seed": "src/vik-seed.js",
+    "vik-status": "src/vik-status.js"
   }
 }

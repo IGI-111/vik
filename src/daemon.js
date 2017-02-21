@@ -1,17 +1,19 @@
-import rp from 'request-promise'
+const rp = require('request-promise')
 
-const daemon = 'http://localhost:2342'
+const daemon = 'http://localhost:6060'
 
-export function add (torrent) {
+module.exports = {add, seed, remove, list, info}
+
+function add (torrent) {
   return rp.post({
     url: `${daemon}/add`,
     json: {
-      'infoHash': torrent
+      'torrent': torrent
     }
   })
 }
 
-export function seed (path) {
+function seed (path) {
   return rp.post({
     url: `${daemon}/seed`,
     json: {
@@ -20,15 +22,14 @@ export function seed (path) {
   })
 }
 
-export function remove (torrent) {
+function remove (torrent) {
   return rp.delete(`${daemon}/delete/${torrent}`)
 }
-export async function list () {
-  const res = await rp.get(`${daemon}/list`)
-  return JSON.parse(res)
+
+function list () {
+  return rp.get(`${daemon}/list`).then((res) => JSON.parse(res))
 }
 
-export async function info (torrent) {
-  const res = await rp.get(`${daemon}/info/${torrent}`)
-  return JSON.parse(res)
+function info (torrent) {
+  return rp.get(`${daemon}/info/${torrent}`).then((res) => JSON.parse(res))
 }

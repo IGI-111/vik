@@ -1,22 +1,23 @@
 #!/usr/bin/env node
 
-import program from 'commander'
-import humanizeDuration from 'humanize-duration'
-import prettySize from 'prettysize'
-import { info } from './daemon'
+const program = require('commander')
+const humanizeDuration = require('humanize-duration')
+const prettySize = require('prettysize')
+const daemon = require('./daemon')
 
 program
   .option('-d --debug', 'Print complete status in JSON')
   .parse(process.argv)
 
-program.args.forEach(async (arg) => {
+program.args.forEach((arg) => {
   try {
-    const i = await info(arg)
-    if (program.debug) {
-      console.log(JSON.stringify(i, null, 2))
-    } else {
-      prettyPrint(i)
-    }
+    daemon.info(arg).then((i) => {
+      if (program.debug) {
+        console.log(JSON.stringify(i, null, 2))
+      } else {
+        prettyPrint(i)
+      }
+    })
   } catch (err) {
     console.error(err.message)
   }

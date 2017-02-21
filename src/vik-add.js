@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 
-import program from 'commander'
-import { add } from './daemon'
+const program = require('commander')
+const daemon = require('./daemon')
 
 program.parse(process.argv)
 
 program.args.forEach((arg) => {
   try {
-    add(arg).then((res) => {
+    daemon.add(arg).then((res) => {
       console.log('Added ' + res)
     })
   } catch (e) {
