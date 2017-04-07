@@ -5,8 +5,8 @@ const daemon = 'http://localhost:6060'
 module.exports = {add, seed, remove, list, info}
 
 function add (torrent) {
-  return rp.post({
-    url: `${daemon}/add`,
+  return rp.put({
+    url: `${daemon}/torrent`,
     json: {
       'torrent': torrent
     }
@@ -15,7 +15,7 @@ function add (torrent) {
 
 function seed (path) {
   return rp.post({
-    url: `${daemon}/seed`,
+    url: `${daemon}/torrent`,
     json: {
       'path': path
     }
@@ -23,13 +23,13 @@ function seed (path) {
 }
 
 function remove (torrent) {
-  return rp.delete(`${daemon}/delete/${torrent}`)
+  return rp.delete(`${daemon}/torrent/${torrent}`)
 }
 
 function list () {
-  return rp.get(`${daemon}/list`).then((res) => JSON.parse(res))
+  return rp.get(`${daemon}/torrent`).then((res) => JSON.parse(res))
 }
 
 function info (torrent) {
-  return rp.get(`${daemon}/info/${torrent}`).then((res) => JSON.parse(res))
+  return rp.get(`${daemon}/torrent/${torrent}`).then((res) => JSON.parse(res))
 }
