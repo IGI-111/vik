@@ -15,16 +15,11 @@
   "dependencies": {
     "commander": "^2.9.0",
     "humanize-duration": "^3.10.0",
-    "prettysize": "0.0.3",
+    "prettysize": "^0.0.3",
     "request": "^2.79.0",
     "request-promise": "^4.1.1"
   },
   "bin": {
-    "vik": "src/vik.js",
-    "vik-add": "src/vik-add.js",
-    "vik-list": "src/vik-list.js",
-    "vik-remove": "src/vik-remove.js",
-    "vik-seed": "src/vik-seed.js",
-    "vik-status": "src/vik-status.js"
+    "vik": "src/index.js"
   }
 }
